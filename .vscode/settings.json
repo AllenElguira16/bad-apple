@@ -1,3 +1,10 @@
 {
-  "cSpell.words": ["ffprobe"]
+  "cSpell.words": [
+    "ffprobe",
+    "mjpeg",
+    "mplayer",
+    "rawvideo",
+    "vcodec",
+    "WSLENV"
+  ]
 }

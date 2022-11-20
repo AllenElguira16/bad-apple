@@ -1,27 +1,28 @@
 import sharp from "sharp";
-import path from "path";
 import { HEIGHT, WIDTH } from "./const";
 
 const density = [" ", ",", ":", ";", "+", "*", "?", "%", "S", "#", "@"];
 
 export const handleFrame = async (bufferImage: Buffer) => {
-  const { data: buffer, info } = await sharp(bufferImage)
+  // Set image to RAW file type
+  const buffer = await sharp(bufferImage)
     .resize(WIDTH, HEIGHT, { fit: "fill" })
     .removeAlpha()
     .raw()
-    .toBuffer({ resolveWithObject: true });
+    .toBuffer();
 
-  let x = 0;
+  let rowLength = 0;
   let output = "";
 
+  // Read pixel density
   for (let i = 0; i < buffer.length; i += 3) {
-    const char = density[Math.round(buffer[i] / 25.5)];
-    output += char;
-    x++;
+    // Get character from density
+    output += density[Math.round(buffer[i] / 25.5)];
+    rowLength++;
 
-    if (x >= WIDTH) {
+    if (rowLength >= WIDTH) {
       output += "\n";
-      x = 0;
+      rowLength = 0;
     }
   }
 

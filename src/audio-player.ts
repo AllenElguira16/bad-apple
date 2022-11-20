@@ -8,12 +8,15 @@ export const AudioPlayer = () => {
     play: (path: string) => {
       if (spawnInstance) return;
 
+      // Start Player
+      // NOTE: Change this depending on the environment,
+      // in my case I use WSLENV so using mplayer.exe is not a problem
       spawnInstance = spawn("mplayer.exe", ["-vo", "null", path], {
-        // stdio: "inherit",
         shell: false,
         detached: true,
       });
     },
+    // Kill audio player
     kill: () => {
       spawnInstance?.kill();
     },
