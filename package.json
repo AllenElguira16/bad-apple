@@ -1,0 +1,25 @@
+{
+  "name": "bad-apple",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "scripts": {
+    "dev": "ts-node src/index.ts"
+  },
+  "dependencies": {
+    "@ffmpeg-installer/ffmpeg": "^1.1.0",
+    "@types/fluent-ffmpeg": "^2.1.20",
+    "fluent-ffmpeg": "^2.1.2",
+    "jimp": "^0.16.2",
+    "p5": "^1.5.0",
+    "play-sound": "^1.1.5",
+    "sharp": "^0.31.2",
+    "ts-node": "^10.9.1",
+    "typescript": "^4.9.3"
+  },
+  "devDependencies": {
+    "@types/p5": "^1.4.3",
+    "@types/play-sound": "^1.1.0",
+    "@types/sharp": "^0.31.0"
+  }
+}
