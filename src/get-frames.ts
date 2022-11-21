@@ -1,13 +1,12 @@
 import fs from "fs";
+import { spawn } from "child_process";
 import { HEIGHT, WIDTH } from "./const";
 
 export const extractFrames = async (path: string) => {
   const { ExtractFrames } = await import("./extract-frames");
-  const HW = WIDTH.toString() + "x" + HEIGHT.toString();
   const logStream = fs.createWriteStream("./logs/logFile.log");
 
-  const spawnProcess = require("child_process").spawn;
-  let ffmpeg = spawnProcess("ffmpeg", [
+  let ffmpeg = spawn("ffmpeg", [
     "-i",
     path,
     "-vcodec",
@@ -15,11 +14,10 @@ export const extractFrames = async (path: string) => {
     "-f",
     "rawvideo",
     "-s",
-    HW, // size of one frame
+    WIDTH.toString() + "x" + HEIGHT.toString(), // size of one frame
     "pipe:1",
   ]);
 
-  // ffmpeg.stderr.setEncoding('utf8');
   ffmpeg.stderr.pipe(logStream);
 
   let frames: Buffer[] = [];

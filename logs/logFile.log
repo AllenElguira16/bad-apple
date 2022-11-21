@@ -9,40 +9,37 @@ ffmpeg version 4.4.2-0ubuntu0.22.04.1 Copyright (c) 2000-2021 the FFmpeg develop
   libswscale      5.  9.100 /  5.  9.100
   libswresample   3.  9.100 /  3.  9.100
   libpostproc    55.  9.100 / 55.  9.100
-Input #0, mov,mp4,m4a,3gp,3g2,mj2, from '/home/allen_kunn16/programs/bad-apple/assets/video.mp4':
+Input #0, mov,mp4,m4a,3gp,3g2,mj2, from '/home/allen_kunn16/programs/bad-apple/assets/rotating-rat.mp4':
   Metadata:
     major_brand     : mp42
     minor_version   : 0
     compatible_brands: isommp42
-    creation_time   : 2019-12-01T04:55:14.000000Z
-  Duration: 00:03:39.08, start: 0.000000, bitrate: 285 kb/s
-  Stream #0:0(und): Video: h264 (Main) (avc1 / 0x31637661), yuv420p, 480x360 [SAR 1:1 DAR 4:3], 153 kb/s, 30 fps, 30 tbr, 15360 tbn, 60 tbc (default)
+    encoder         : Google
+  Duration: 00:04:10.78, start: 0.000000, bitrate: 179 kb/s
+  Stream #0:0(und): Video: h264 (Main) (avc1 / 0x31637661), yuv420p(tv, smpte170m/smpte170m/bt709), 296x296 [SAR 1:1 DAR 1:1], 81 kb/s, 14.99 fps, 14.99 tbr, 15k tbn, 29.97 tbc (default)
     Metadata:
-      creation_time   : 2019-12-01T04:55:14.000000Z
-      handler_name    : ISO Media file produced by Google Inc. Created on: 11/30/2019.
+      handler_name    : ISO Media file produced by Google Inc.
       vendor_id       : [0][0][0][0]
-  Stream #0:1(und): Audio: aac (LC) (mp4a / 0x6134706D), 44100 Hz, stereo, fltp, 127 kb/s (default)
+  Stream #0:1(eng): Audio: aac (LC) (mp4a / 0x6134706D), 44100 Hz, stereo, fltp, 95 kb/s (default)
     Metadata:
-      creation_time   : 2019-12-01T04:55:14.000000Z
-      handler_name    : ISO Media file produced by Google Inc. Created on: 11/30/2019.
+      handler_name    : ISO Media file produced by Google Inc.
       vendor_id       : [0][0][0][0]
 Stream mapping:
   Stream #0:0 -> #0:0 (h264 (native) -> mjpeg (native))
 Press [q] to stop, [?] for help
-[swscaler @ 0x561421655780] deprecated pixel format used, make sure you did set range correctly
+[swscaler @ 0x55c54fd2ba00] deprecated pixel format used, make sure you did set range correctly
 Output #0, rawvideo, to 'pipe:1':
   Metadata:
     major_brand     : mp42
     minor_version   : 0
     compatible_brands: isommp42
     encoder         : Lavf58.76.100
-  Stream #0:0(und): Video: mjpeg, yuvj420p(pc, progressive), 51x38 [SAR 152:153 DAR 4:3], q=2-31, 200 kb/s, 30 fps, 30 tbn (default)
+  Stream #0:0(und): Video: mjpeg, yuvj420p(pc, smpte170m/smpte170m/bt709, progressive), 128x72 [SAR 9:16 DAR 1:1], q=2-31, 200 kb/s, 14.99 fps, 14.99 tbn (default)
     Metadata:
-      creation_time   : 2019-12-01T04:55:14.000000Z
-      handler_name    : ISO Media file produced by Google Inc. Created on: 11/30/2019.
+      handler_name    : ISO Media file produced by Google Inc.
       vendor_id       : [0][0][0][0]
       encoder         : Lavc58.134.100 mjpeg
     Side data:
       cpb: bitrate max/min/avg: 0/0/200000 buffer size: 0 vbv_delay: N/A
-frame=    1 fps=0.0 q=1.6 size=       0kB time=00:00:00.03 bitrate=  59.5kbits/s speed=13.5x    frame= 1822 fps=0.0 q=1.6 size=    1511kB time=00:01:00.73 bitrate= 203.8kbits/s speed= 121x    frame= 3623 fps=3612 q=2.6 size=    3074kB time=00:02:00.76 bitrate= 208.5kbits/s speed= 120x    frame= 5442 fps=3621 q=1.8 size=    4542kB time=00:03:01.40 bitrate= 205.1kbits/s speed= 121x    frame= 6572 fps=3620 q=1.6 Lsize=    5440kB time=00:03:39.06 bitrate= 203.4kbits/s speed= 121x    
-video:5440kB audio:0kB subtitle:0kB other streams:0kB global headers:0kB muxing overhead: 0.000000%
+frame=    1 fps=0.0 q=1.6 size=       1kB time=00:00:00.06 bitrate= 131.6kbits/s speed=  36x    frame= 1625 fps=0.0 q=1.6 size=    1763kB time=00:01:48.44 bitrate= 133.2kbits/s speed= 216x    frame= 3232 fps=3224 q=1.6 size=    3503kB time=00:03:35.68 bitrate= 133.1kbits/s speed= 215x    frame= 3757 fps=3221 q=1.6 Lsize=    4074kB time=00:04:10.71 bitrate= 133.1kbits/s speed= 215x    
+video:4074kB audio:0kB subtitle:0kB other streams:0kB global headers:0kB muxing overhead: 0.000000%

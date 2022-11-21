@@ -4,20 +4,27 @@
   "main": "index.js",
   "license": "MIT",
   "scripts": {
-    "dev": "ts-node src/index.ts"
+    "start": "node --max-old-space-size=10240 -r ts-node/register src/index.ts"
   },
   "dependencies": {
     "@ffmpeg-installer/ffmpeg": "^1.1.0",
     "@types/fluent-ffmpeg": "^2.1.20",
+    "driftless": "^2.0.3",
     "fluent-ffmpeg": "^2.1.2",
+    "glob": "^8.0.3",
+    "glob-promise": "^5.0.0",
+    "hex-color-to-color-name": "^1.0.2",
     "jimp": "^0.16.2",
     "p5": "^1.5.0",
     "play-sound": "^1.1.5",
     "sharp": "^0.31.2",
+    "to-ansi": "^1.4.3",
     "ts-node": "^10.9.1",
     "typescript": "^4.9.3"
   },
   "devDependencies": {
+    "@types/driftless": "^2.0.1",
+    "@types/glob": "^8.0.0",
     "@types/p5": "^1.4.3",
     "@types/play-sound": "^1.1.0",
     "@types/sharp": "^0.31.0"

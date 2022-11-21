@@ -21,8 +21,8 @@ export class ExtractFrames extends Transform {
         start + this.delimiter.length
       );
       if (end < 0) break; // we haven't got the whole frame yet
-      this.push(this.buffer.slice(start, end)); // emit a frame
-      this.buffer = this.buffer.slice(end); // remove frame data from buffer
+      this.push(this.buffer.subarray(start, end)); // emit a frame
+      this.buffer = this.buffer.subarray(end); // remove frame data from buffer
       if (start > 0) console.error(`Discarded ${start} bytes of invalid data`);
     }
     cb();

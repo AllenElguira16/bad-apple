@@ -1,41 +1,54 @@
 import path from "path";
-import readline from "readline";
+import { setDriftlessInterval, clearDriftless } from "driftless";
 import { extractFrames } from "./get-frames";
 import { handleFrame } from "./handle-frame";
 import { AudioPlayer } from "./audio-player";
+import { getFps } from "./get-fps";
 
 const audioPlayer = AudioPlayer();
+const videoPath = path.resolve(__dirname, "../assets/rotating-rat.mp4");
 
-function sleep(ms: number) {
-  return new Promise((resolve) => setTimeout(resolve, ms));
-}
+let interval: number;
 
 (async () => {
-  console.clear();
-  console.log("Loading Video...");
-  const videoPath = path.resolve(__dirname, "../assets/video.mp4");
+  process.stdout.clearLine(1);
+  process.stdout.cursorTo(0);
+  process.stdout.write("Loading Video...");
   const videoFrames = await extractFrames(videoPath);
+  const fps = (await getFps(videoPath)) || 30;
 
-  console.clear();
-  console.log("Parse Frames...");
   const frames: string[] = [];
-  for (const frame of videoFrames) {
+
+  for (let i = 0; i < videoFrames.length; i++) {
+    process.stdout.clearLine(1);
+    process.stdout.cursorTo(0);
+    const frame = videoFrames[i];
+    process.stdout.write(
+      `Extracting Frames... (${i + 1}/${videoFrames.length})`
+    );
     frames.push(await handleFrame(frame));
   }
 
-  for (let i = 0; i < frames.length; i++) {
-    // process.stdout.clearLine(1);
-    // process.stdout.cursorTo(0);
-    const frame = frames[i];
+  let i = 0;
+  interval = setDriftlessInterval(() => {
     audioPlayer.play(videoPath);
-    console.log(frame + `\nframes(${i + 1}/${frames.length})`);
-    await sleep(1000 / 30);
-  }
+    process.stdout.cursorTo(0, 0);
+
+    const frame = frames[i];
+    process.stdout.write(frame + `\nframes(${i + 1}/${frames.length})`);
+    i++;
+
+    if (i >= frames.length) {
+      clearDriftless(interval);
+      audioPlayer?.kill();
+    }
+  }, 1000 / fps);
 
   audioPlayer?.kill();
 })();
 
 process.on("SIGINT", () => {
   audioPlayer?.kill();
+  clearDriftless(interval);
   process.exit();
 });
