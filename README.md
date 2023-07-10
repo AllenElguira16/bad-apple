@@ -1,4 +1,4 @@
-# Bad Apple NodeJS
+# Video to Ascii CLI
 
 Download and install ffmpeg and mplayer
 
