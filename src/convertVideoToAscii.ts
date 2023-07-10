@@ -1,4 +1,4 @@
-import logger from "log-update";
+// import logger from "log-update";
 import * as rimraf from "rimraf";
 import fs from "fs";
 import ffmpeg from "ffmpeg";
@@ -6,9 +6,10 @@ import { Worker } from "worker_threads";
 import path from "path";
 import { fileURLToPath } from "url";
 import { FRAME_RATE, HEIGHT, WIDTH } from "./const";
+import { cleanFiles } from "./cleanFiles";
 
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = path.dirname(__filename);
+// const __filename = fileURLToPath(import.meta.url);
+// const __dirname = path.dirname(__filename);
 
 export const convertVideoToAscii = async (
   videoPath: string,
@@ -21,14 +22,16 @@ export const convertVideoToAscii = async (
   const video = await new ffmpeg(videoPath);
 
   const metadata = video.metadata as Metadata;
-  const width = WIDTH;
-  const height = width / metadata.video.aspect.value;
 
-  logger("Loading Video...");
+  const height = process.stdout.rows;
+  const width = Math.ceil(height * metadata.video.aspect.value);
+
+  console.log("\x1b[1;1HLoading Video...");
+
   const imageFiles = (
     await video.fnExtractFrameToJPG("./frames", {
       frame_rate: FRAME_RATE,
-      size: `${width}x${height}`,
+      size: `${WIDTH}x?`,
       file_name: "%d",
     })
   )
@@ -40,7 +43,7 @@ export const convertVideoToAscii = async (
     .map((frame) => path.resolve(frame));
 
   console.clear();
-  logger("Extracting Frames...\n");
+  console.log("\x1b[1;1HExtracting Frames...\n");
 
   const chunkSize = Math.ceil(imageFiles.length / numThreads);
   const workerPromises: Promise<Record<string, string>>[] = [];
@@ -50,8 +53,8 @@ export const convertVideoToAscii = async (
     const endIndex = Math.min(startIndex + chunkSize, imageFiles.length);
     const workerData = {
       imageFiles: imageFiles.slice(startIndex, endIndex),
-      width: WIDTH,
-      height: HEIGHT,
+      width,
+      height,
       threadNumber: i,
       consoleWidth: process.stdout.columns,
     };
@@ -82,8 +85,6 @@ export const convertVideoToAscii = async (
       frames[index] = workerFrames[key];
     });
   });
-
-  rimraf.sync("./frames");
 
   return { frames, seconds: metadata.duration.seconds, fps: FRAME_RATE };
 };

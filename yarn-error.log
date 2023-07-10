@@ -1,20 +1,20 @@
 Arguments: 
-  C:\Program Files\nodejs\node.exe C:\Users\Allen\AppData\Roaming\npm\node_modules\yarn\bin\yarn.js add worker_threads
+  C:\Program Files\nodejs\node.exe C:\Users\Allen\AppData\Roaming\npm\node_modules\yarn\bin\yarn.js add @types/play
 
 PATH: 
-  C:\Python311\Scripts\;C:\Python311\;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Windows\System32\OpenSSH\;C:\Program Files\dotnet\;C:\Program Files (x86)\NVIDIA Corporation\PhysX\Common;C:\Program Files\NVIDIA Corporation\NVIDIA NvDLISR;C:\Program Files (x86)\Bitvise SSH Client;C:\Program Files\Git\cmd;C:\Program Files\nodejs\;C:\ProgramData\chocolatey\bin;C:\xampp\php;C:\ProgramData\ComposerSetup\bin;C:\Users\Allen\AppData\Local\Microsoft\WindowsApps;C:\Users\Allen\AppData\Local\Programs\Microsoft VS Code\bin;C:\Program Files\Mplayer;C:\Users\Allen\AppData\Roaming\npm;C:\Users\Allen\AppData\Roaming\Composer\vendor\bin;C:\Users\Allen\AppData\Local\Programs\oh-my-posh\bin;C:\adb;
+  C:\Python311\Scripts\;C:\Python311\;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Windows\System32\OpenSSH\;C:\Program Files (x86)\NVIDIA Corporation\PhysX\Common;C:\Program Files\NVIDIA Corporation\NVIDIA NvDLISR;C:\Program Files\TortoiseSVN\bin;C:\Program Files\Git\cmd;C:\ProgramData\chocolatey\bin;;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\WINDOWS\System32\OpenSSH\;C:\Program Files (x86)\Bitvise SSH Client;C:\Program Files\Go\bin;C:\Program Files\nodejs\;C:\Users\Allen\AppData\Local\Microsoft\WindowsApps;;C:\Users\Allen\AppData\Local\Programs\Microsoft VS Code\bin;C:\Users\Allen\AppData\Local\Programs\oh-my-posh\bin;C:\Users\Allen\AppData\Roaming\npm
 
 Yarn version: 
   1.22.19
 
 Node version: 
-  18.16.1
+  18.16.0
 
 Platform: 
   win32 x64
 
 Trace: 
-  Error: https://registry.yarnpkg.com/worker_threads: Not found
+  Error: https://registry.yarnpkg.com/@types%2fplay: Not found
       at params.callback [as _callback] (C:\Users\Allen\AppData\Roaming\npm\node_modules\yarn\lib\cli.js:66145:18)
       at self.callback (C:\Users\Allen\AppData\Roaming\npm\node_modules\yarn\lib\cli.js:140890:22)
       at Request.emit (node:events:513:28)
@@ -34,7 +34,7 @@ npm manifest:
     "license": "MIT",
     "type": "module",
     "scripts": {
-      "start": "node --max-old-space-size=10240  --experimental-specifier-resolution=node -r ts-node/register --loader ts-node/esm src/index.ts"
+      "start": "node --no-warnings --max-old-space-size=10240  --experimental-specifier-resolution=node -r ts-node/register --loader ts-node/esm src/index.ts"
     },
     "dependencies": {
       "@ffmpeg-installer/ffmpeg": "^1.1.0",
@@ -54,6 +54,7 @@ npm manifest:
       "lodash": "^4.17.21",
       "log-update": "^5.0.1",
       "p5": "^1.5.0",
+      "play": "^0.5.0",
       "play-sound": "^1.1.5",
       "rimraf": "^5.0.1",
       "sharp": "^0.31.2",
@@ -735,6 +736,11 @@ Lockfile:
       color-convert "^2.0.1"
       color-string "^1.9.0"
   
+  "colors@>= 0.3.0":
+    version "1.4.0"
+    resolved "https://registry.yarnpkg.com/colors/-/colors-1.4.0.tgz#c50491479d4c1bdaed2c9ced32cf7c7dc2360f78"
+    integrity sha512-a+UqTh4kgZg/SlGvfbzDHpgRu7AAQOmmqRHJnxhRZICKFUT91brVhNNt58CMWU9PsBbv3PDCZUHbVxuDiH2mtA==
+  
   concat-map@0.0.1:
     version "0.0.1"
     resolved "https://registry.yarnpkg.com/concat-map/-/concat-map-0.0.1.tgz#d8a96bd77fd68df7793a73036a3ba0d5405d477b"
@@ -1279,6 +1285,13 @@ Lockfile:
     integrity sha512-gbdF1iLNyL5r9Ne9YwARGMkrvfR4EL9G1ZLtFPLkI2tQt0kkHw5CHM5E6Gl/lDuuk/Uj/O5Q29Bi08jMK4egbA==
     dependencies:
       find-exec "1.0.2"
+  
+  play@^0.5.0:
+    version "0.5.0"
+    resolved "https://registry.yarnpkg.com/play/-/play-0.5.0.tgz#f814e67163de29de7b9d9e905df8389ae4ea6347"
+    integrity sha512-R+/X709543S7W3GXDpfN+W7sJwWPk+h4pnKC/S1/hlzUCnpUG0buoSRnCSJLBv5ADBIg845F7qvNxHvw6nEgLA==
+    dependencies:
+      colors ">= 0.3.0"
   
   pngjs@^3.0.0, pngjs@^3.3.3:
     version "3.4.0"
