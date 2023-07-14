@@ -7,10 +7,10 @@
     "resolveJsonModule": true,
     "esModuleInterop": true,
     "forceConsistentCasingInFileNames": true
-  },
-  "ts-node": {
-    "compilerOptions": {
-      "module": "CommonJS"
-    }
   }
+  // "ts-node": {
+  //   "compilerOptions": {
+  //     "module": "CommonJS"
+  //   }
+  // }
 }
